@@ -1,0 +1,53 @@
+<header>
+  <!-- Dropdown Structure -->
+  <ul id="dropdown1" class="dropdown-content">
+    <% if logged_in? %>
+      <li><%= link_to current_user.name, student_path(current_user) %></li>
+    <% end %>
+    <li> <%= session_link %></li>
+    <li class="divider"></li>
+  </ul>
+  <ul id="dropdown2" class="dropdown-content">
+    <li> <%= session_link %></li>
+    <li class="divider"></li>
+  </ul>
+
+  <nav>
+    <div class="container">
+      <div class="nav-wrapper">
+        <%= link_to 'University website',root_path ,class: "brand-logo right" %>
+        <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+        <ul id="nav-mobile" class="left hide-on-med-and-down">
+          <li><%= link_to 'Courses', root_path %></li>
+          <% if logged_in? %>
+            <li><%= link_to 'Students', students_path %></li>
+          <% end %>
+          <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Account<i class="material-icons right">arrow_drop_down</i></a></li>
+        </ul>
+
+        <ul class="sidenav" id="mobile-demo">
+          <li><%= link_to 'Courses', root_path %></li>
+          <% if logged_in? %>
+            <li><%= link_to 'Students', students_path %></li>
+          <% end %>
+          <li><a class="dropdown-trigger" href="#!" data-target="dropdown2">Account<i class="material-icons right">arrow_drop_down</i></a></li>
+        </ul>
+
+      </div>
+    </div>
+  </nav>
+
+<% flash.each do |key,msg| %>
+    <div class="container">
+      <div class="row signup">
+        <div class="col s12 m12 l12">
+          <div class="card-panel red lighten-2" id="flash-msg">
+            <span class="white-text">
+              <%= msg %>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</header>
