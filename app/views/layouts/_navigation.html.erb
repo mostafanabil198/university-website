@@ -5,6 +5,9 @@
       <li><%= link_to current_user.name, student_path(current_user) %></li>
     <% end %>
     <li> <%= session_link %></li>
+    <% if !logged_in? %>
+      <li><%= link_to "Signup!", new_student_path %></li>
+    <% end %>
     <li class="divider"></li>
   </ul>
   <ul id="dropdown2" class="dropdown-content">
